@@ -9,14 +9,19 @@
   <h1>Happy Birthday Anna 🎂❤️✨</h1>
   <img src="img/img1.jpeg">
   <br>
-  <p>Scroll down ↓</p>
+  <button class="next-btn" onclick="goNext()">View Memories 💖</button>
 </div>
 
+
 <script>
-window.addEventListener("wheel", () => {
-  parent.document.getElementById("contentFrame").src = "memories.html";
-});
+function goNext() {
+  document.body.style.opacity = 0;
+  setTimeout(() => {
+    location.href = "memories.html";
+  }, 800);
+}
 </script>
+
 
 </body>
 </html>

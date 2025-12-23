@@ -237,3 +237,20 @@ body.stage {
   color: #ff8080;
   margin-top: 10px;
 }
+
+.next-btn {
+  margin-top: 30px;
+  padding: 14px 36px;
+  border: none;
+  border-radius: 30px;
+  background: linear-gradient(135deg, #ff6a88, #ff99ac);
+  color: white;
+  font-size: 17px;
+  cursor: pointer;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+  transition: transform 0.3s ease;
+}
+
+.next-btn:hover {
+  transform: scale(1.05);
+}
