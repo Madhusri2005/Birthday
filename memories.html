@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="page">
+  
+  <img id="memImg" class="memory-img">
+  <p id="memText" class="memory-text"></p>
+  <button id="finalBtn" style="display:none">Final Surprise 🎭</button>
+</div>
+
+
+<script>
+const memories = [
+  {img:"img/img3.jpeg", text:"That innocent sparkle in your eyes ✨ 💕"},
+  {img:"img/anna1.jpeg", text:"Playtime looks this adorable 😄"},
+  {img:"img/anna2.jpeg", text:"Your heart is as beautiful as your dreams 🤍"},
+  {img:"img/img7.jpeg", text:"Wishing you good health, peace of mind, and endless happiness 🌸"},
+  {img:"img/img4.jpeg", text:"May success follow you wherever you go and whatever you do ✨"},
+  {img:"img/img5.jpeg", text:"May each year bring you closer to your goals and dreams 🎯"}
+];
+
+let i = 0;
+const memImg = document.getElementById("memImg");
+const memText = document.getElementById("memText");
+
+function showMemory() {
+  if(i < memories.length){
+    memImg.src = memories[i].img;
+    memText.innerText = memories[i].text;
+
+    // restart animation
+    memImg.classList.remove("show");
+    memText.classList.remove("show");
+    void memImg.offsetWidth; // force reflow
+    memImg.classList.add("show");
+    memText.classList.add("show");
+
+    i++;
+    setTimeout(showMemory, 6500); // slightly more than animation duration
+  } else {
+    document.getElementById("finalBtn").style.display = "inline-block";
+  }
+}
+
+showMemory();
+
+document.getElementById("finalBtn").onclick = () => {
+  parent.document.getElementById("contentFrame").src = "final.html";
+};
+</script>
+
+</body>
+</html>

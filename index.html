@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Birthday Surprise</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- PASSWORD SCREEN -->
+<div id="passwordScreen">
+  <div class="password-box">
+    <h2>🎁 Special Access</h2>
+    <p>Enter the secret password</p>
+    <input type="password" id="passwordInput" placeholder="Password">
+    <button onclick="checkPassword()">Enter</button>
+    <p id="errorMsg"></p>
+  </div>
+</div>
+
+
+<!-- MUSIC: never stops -->
+<audio id="music" src="happy-444082.mp3" loop></audio>
+
+<!-- Countdown screen -->
+<div class="page" id="startScreen">
+  <button id="openBtn">OPEN 🎁</button>
+  <h1 id="count"></h1>
+</div>
+
+<!-- Iframe for all "pages" -->
+<iframe id="contentFrame"
+        style="display:none; width:100vw; height:100vh; border:none; overflow-y:auto;"
+        scrolling="yes">
+</iframe>
+
+
+<script>
+const music = document.getElementById("music");
+const openBtn = document.getElementById("openBtn");
+const countEl = document.getElementById("count");
+const frame = document.getElementById("contentFrame");
+
+openBtn.onclick = () => {
+  music.volume = 0.4;
+  music.play(); // ✅ starts music after user click
+
+  openBtn.style.display = "none";
+  let c = 5;
+  countEl.innerText = c;
+
+  const timer = setInterval(() => {
+    c--;
+    countEl.innerText = c;
+    if(c < 0){
+      clearInterval(timer);
+      document.getElementById("startScreen").style.display = "none";
+      frame.style.display = "block";
+      frame.src = "wish.html"; // load first page
+    }
+  }, 1000);
+};
+function checkPassword() {
+  const correctPassword = "thoongumoonji"; // 🔑 CHANGE THIS
+  const input = document.getElementById("passwordInput").value;
+  const error = document.getElementById("errorMsg");
+
+  if (input === correctPassword) {
+    document.getElementById("passwordScreen").style.display = "none";
+  } else {
+    error.innerText = "Wrong password ❌ Try again";
+  }
+}
+</script>
+
+</body>
+</html>
